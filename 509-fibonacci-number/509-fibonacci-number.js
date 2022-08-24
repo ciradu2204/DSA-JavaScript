@@ -3,6 +3,8 @@
  * @return {number}
  */
 var fib = function(n) {
+    
+    /*Iterative
     if(n == 0){
         return n; 
     }
@@ -17,6 +19,13 @@ var fib = function(n) {
        prec2 = result; 
     }
     return prec1 + prec2; 
+    
+    */
+    
+    //recursive 
+    if(n == 0) return 0; 
+    if(n == 1) return 1; 
+    return fib(n-1) + fib(n-2); 
 };
 
 /*algorithm
@@ -34,5 +43,7 @@ prev2 = 1
 3. update prev2 = sum(prev + prev2)
 4. return sum(prev + prev2)
 
+Time complexity 
+O(n)
 
 **/
