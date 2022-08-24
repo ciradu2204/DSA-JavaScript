@@ -4,18 +4,17 @@
  * @return {number}
  */
 var search = function(nums, target) {
-    /*iterative approach: O(n)
+    /*iterative approach: O(log(n))
     let start = 0; 
     let end = nums.length-1; 
     while(start <= end){
         let mid = parseInt(start + (end - start)/2); 
-        console.log(mid)
           if(nums[mid] == target){
             return mid; 
         }else if(nums[mid] < target){
-            start++; 
+            start = mid + 1; 
         }else if(nums[mid] > target){
-            end--; 
+            end = mid-1; 
         }
     }
     return -1;*/ 
