@@ -4,26 +4,32 @@
  */
 var generateParenthesis = function(n) {
     let result = []
-    let initial = "("
-    helperFunction(n,result, initial, n-1, n)
+    let initial = []
+    helperFunction(n,result, initial, n, n)
     return result; 
     
 };
 
 var helperFunction = function(n, result, initial, leftRem, rightRem){
- console.log(leftRem)
- console.log(rightRem)
  if(leftRem == 0 && rightRem == 0){
- result.push(initial);
+  result.push(initial.join(""));
  return; 
  } ;
  if(leftRem == 0){
-       helperFunction(n, result, initial + ")", leftRem, rightRem-1)   
+     initial.push(")");
+     helperFunction(n, result, initial, leftRem, rightRem-1)   
+     initial.pop();
  }else if(leftRem < rightRem){
-     helperFunction(n, result, initial + "(", leftRem-1, rightRem); 
-     helperFunction(n, result, initial + ")", leftRem, rightRem-1)
+     initial.push("(");
+     helperFunction(n, result, initial, leftRem-1, rightRem); 
+     initial.pop()
+     initial.push(")");
+     helperFunction(n, result, initial, leftRem, rightRem-1)
+     initial.pop()
  }else if(leftRem == rightRem){
-    helperFunction(n, result, initial + "(", leftRem-1, rightRem); 
+    initial.push("(");
+    helperFunction(n, result, initial, leftRem-1, rightRem); 
+    initial.pop()
  }
 }
 
