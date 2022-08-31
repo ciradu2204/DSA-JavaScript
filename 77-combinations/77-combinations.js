@@ -32,10 +32,9 @@ var combinations = function(current,n, arraySize, k, result, resultEl){
  2. start from i 
  3. start from j=i+1
  4. 
- 
- Algorithm: Optimized approach 
- 
- 
- 
-  n=4
+ Algorithm: Optimized approach - O(kn^k)
+ 1.create a subarray 
+ 2.create a combinations of size k 
+ 3.add the subarray in the result array
+
 */
