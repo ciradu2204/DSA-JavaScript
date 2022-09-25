@@ -3,27 +3,32 @@
  * @return {string}
  */
 var reverseWords = function(s) {
-    let wordArray = s.split(" "); 
-    console.log(reverse(wordArray[0])); 
-    for(let i= 0; i<wordArray.length; i++){
-        wordArray[i] = reverse(wordArray[i]); 
-    }
-    return wordArray.join(" "); 
-};
-var reverse = function(word){
-    let wordArr = word.split('');
+    let wordArray = s.split(''); 
     let p1 = 0; 
-    let p2 = wordArr.length -1;
+    let p2 = p1+1; 
+    while(p2 < wordArray.length){
+        if(wordArray[p2] == " "){ 
+            reverse(wordArray, p1, p2-1);
+            p1 = p2+1; 
+            p2++; 
+        }else{
+            p2++; 
+        }
+    }
+    reverse(wordArray, p1, p2-1)
+    return wordArray.join(""); 
+};
+var reverse = function(word, pointer1, pointer2){
+    let p1 = pointer1; 
+    let p2 = pointer2;
      while(p1 < p2){
-      let tempStart = wordArr[p1]; 
-      let tempEnd = wordArr[p2]; 
-      wordArr[p1] = tempEnd;
-      wordArr[p2] = tempStart; 
+      let tempStart = word[p1]; 
+      let tempEnd = word[p2]; 
+      word[p1] = tempEnd;
+      word[p2] = tempStart; 
       p1++; 
       p2--; 
     }
-    return wordArr.join(''); 
-
 }
 /* 
 
