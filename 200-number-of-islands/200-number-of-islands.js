@@ -19,13 +19,13 @@ var numIslands = function(grid) {
 };
 
 var bfs = function(grid, location){
- let array = [[0,-1], [-1, 0], [1,0], [0,1]]
+ let directions = [[0,-1], [-1, 0], [1,0], [0,1]]
  let queue = []; 
  queue.push(location); 
  while(queue.length > 0){
      let [x, y] = queue.pop(); 
-     for(let i=0; i<array.length; i++){
-           let [x1, y2] = [x + array[i][0], y + array[i][1]]; 
+     for(let i=0; i<directions.length; i++){
+           let [x1, y2] = [x + directions[i][0], y + directions[i][1]]; 
            if(valid([x1,y2], grid) && grid[x1][y2] === "1"){
              grid[x1][y2] = "0"; 
              queue.push([x1,y2]); 
