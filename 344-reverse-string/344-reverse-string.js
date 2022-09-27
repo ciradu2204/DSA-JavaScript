@@ -3,6 +3,8 @@
  * @return {void} Do not return anything, modify s in-place instead.
  */
 var reverseString = function(s) {
+    /*
+    Using two pointers
     let p1 = 0; 
     let p2 = s.length -1; 
     while(p1 < p2){
@@ -10,6 +12,11 @@ var reverseString = function(s) {
         p1++; 
         p2--; 
     }
+    */
+    for(let i=0; i<Math.floor(s.length/2); i++){
+         [s[i], s[s.length-1-i]] = [s[s.length-1-i], s[i]]
+    }
+    return s; 
 };
 
 var swap = function(arrS, p1, p2) {
