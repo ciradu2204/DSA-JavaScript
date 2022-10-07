@@ -9,6 +9,8 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+/**
+  * First solution with a time complexity on nlogn and space complexity of O(1)
 var sortList = function(head) {
     if(head === null) return head; 
     let current = head; 
@@ -60,13 +62,65 @@ var merge = function(left, right){
      }
     return result;
 }
-
-
-/**
-head = [-1,5,3,4,0]
-//find length
-// divide 
-// merge
-         
-
 **/
+
+var sortList = function(head) {
+   if(head == null || head.next == null ) return head; 
+return divide(head); 
+}
+
+var divide = function(head){
+    if (!head || !head.next){
+        return head; 
+    }
+    let [head1, head2] = findMidPoint(head); 
+    let left = divide(head1); 
+    let right = divide(head2);
+    let result =  merge(left, right);
+    return result; 
+}
+
+var findMidPoint = function(head){
+    let slow = head; 
+    let faster = head.next; 
+     while(faster !== null && faster.next !== null){
+        slow = slow.next; 
+        faster = faster.next.next; 
+    }
+    let left = head; 
+    let right = slow; 
+    let temp = right.next; 
+    right.next = null; 
+    right = temp;
+    return [left, right]
+}
+
+var merge = function(head1, head2){
+    let mergedList = new ListNode(); 
+    let head = mergedList; 
+    console.log(head1); 
+    console.log(head2)
+    while(head1 !=null || head2 !=null){
+         if(head1 == null){
+            head.next = head2; 
+            head2 = head2.next;
+        }else if(head2 == null){
+            head.next = head1; 
+            head1 = head1.next;
+        }else{
+            if(head1.val < head2.val){
+            head.next = head1; 
+            head1 = head1.next;
+            }else{
+            head.next = head2; 
+            head2 = head2.next; 
+            }
+       }
+        head = head.next; 
+    }
+    
+    return mergedList.next; 
+}
+
+
+
