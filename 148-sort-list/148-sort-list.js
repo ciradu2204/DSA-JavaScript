@@ -98,8 +98,6 @@ var findMidPoint = function(head){
 var merge = function(head1, head2){
     let mergedList = new ListNode(); 
     let head = mergedList; 
-    console.log(head1); 
-    console.log(head2)
     while(head1 !=null || head2 !=null){
          if(head1 == null){
             head.next = head2; 
