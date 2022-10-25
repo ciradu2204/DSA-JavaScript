@@ -17,20 +17,18 @@ var oddEvenList = function(head) {
     let evenPointer = even; 
     let oddPointer = odd; 
     let pointer1 = head.next.next
-
+    let isOdd = true; 
     while(pointer1 !=null){
-        console.log(index)
-        if(evenPointer != null && index%2 == 0){
+        if(evenPointer != null && !isOdd){
           evenPointer.next = new ListNode(pointer1.val); 
           evenPointer = evenPointer.next;
-        }else if(oddPointer != null && index%2 !=0){
+        }else if(oddPointer != null && isOdd){
           oddPointer.next = new ListNode(pointer1.val); 
           oddPointer = oddPointer.next;
         }
         pointer1 = pointer1.next; 
-        index++;
+        isOdd = !isOdd;
     }
-   console.log(odd)
    oddPointer.next = even; 
    return odd; 
 };
