@@ -11,7 +11,6 @@
  */
 var oddEvenList = function(head) {
     if(head == null || head.next == null || head.next.next == null) return head; 
-    let index = 3; 
     let odd = new ListNode(head.val); 
     let even = new ListNode(head.next.val); 
     let evenPointer = even; 
