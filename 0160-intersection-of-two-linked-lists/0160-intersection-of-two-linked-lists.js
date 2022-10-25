@@ -12,6 +12,8 @@
  * @return {ListNode}
  */
 var getIntersectionNode = function(headA, headB) {
+  /** 
+    First approach
     
     let headALength = findLength(headA); 
     let headBLength = findLength(headB);
@@ -37,9 +39,19 @@ var getIntersectionNode = function(headA, headB) {
         return findIntersection(headA, headB);
     }
     
-    return intersection; 
+    return intersection;
+**/
+    if(headA== null || headB == null) return null; 
+    let headAPointer = headA; 
+    let headBPointer = headB; 
+    while(headAPointer != headBPointer){
+        headAPointer = headAPointer == null? headB: headAPointer.next; 
+        headBPointer = headBPointer == null? headA: headBPointer.next; 
+    }
+    return headAPointer; 
     
-    
+       
+
 };
 
 var findLength = function(head){
@@ -52,7 +64,6 @@ var findLength = function(head){
 }
 
 var findIntersection = function(headA, headB){
-    
      while(headA != null && headB != null){
         if(headA == headB){
             return headA; 
