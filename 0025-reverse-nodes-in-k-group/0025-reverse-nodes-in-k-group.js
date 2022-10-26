@@ -13,15 +13,20 @@
 var reverseKGroup = function(head, k) {
     if(head == null || k <=1) return head;
     let headPointer = head; 
-    let result = null; 
+    let result = null;
+    let resultTail = null;
     let current = null; 
     let currentPointer = null; 
     let visitedNodes = 0; 
     while(headPointer !=null){
-        
         if(visitedNodes == k){
            let reversedCurrent =  reverse(current);
-           result = newResult(reversedCurrent, result)
+           if(result == null){
+               result = reversedCurrent; 
+           }else{
+               resultTail.next = reversedCurrent;
+           }
+           resultTail = current;
            visitedNodes = 0; 
            current = null; 
         }
@@ -38,11 +43,18 @@ var reverseKGroup = function(head, k) {
    
     if(visitedNodes == k){
          let reversedCurrent =  reverse(current);
-         result  = newResult(reversedCurrent, result)
+         if(result == null){
+               result = reversedCurrent; 
+         }else{
+               resultTail.next = reversedCurrent;
+         }
          visitedNodes = 0; 
     }else{
-         result = newResult(current, result)
-
+         if(result == null){
+               result = current; 
+           }else{
+               resultTail.next = current;
+           }
     }
     return result;
     
@@ -58,21 +70,21 @@ var reverse = function(headA){
     }
        
 
-    return prev; 
+    return  prev; 
 }
 
-var newResult = function(head, result){
-    let last = result; 
-    while(last != null && last.next != null){
-        last = last.next; 
-    }
-    if(last == null){
-      return head;   
-    }else{
-       last.next = head; 
-    }  
-    return result;
-}
+// var newResult = function(head, result){
+//     let last = result; 
+//     while(last != null && last.next != null){
+//         last = last.next; 
+//     }
+//     if(last == null){
+//       return head;   
+//     }else{
+//        last.next = head; 
+//     }  
+//     return result;
+// }
 
 /**
 -Given head 
