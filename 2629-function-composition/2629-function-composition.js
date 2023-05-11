@@ -4,13 +4,14 @@
  */
 var compose = function(functions) {
 	return function(x) {
-        if(functions.length == 0) return x;
-         let input = x;
-         for(let i=functions.length-1; i>=0;i--){
-             let fn = functions[i]
-              input = fn(input)
-         }
-         return input;
+        // if(functions.length == 0) return x;
+        //  let input = x;
+        //  for(let i=functions.length-1; i>=0;i--){
+        //      let fn = functions[i]
+        //       input = fn(input)
+        //  }
+        //  return input;
+        return functions.reduceRight((acc, f)=>f(acc), x) 
     }
 };
 
