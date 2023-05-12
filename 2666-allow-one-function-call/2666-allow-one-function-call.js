@@ -7,10 +7,8 @@ var once = function(fn) {
     return function(...args){
         if(!called){
            called = true;
-         return fn(...args)
-        }else{
-          return undefined
-        }   
+         return fn.apply(null,args)
+        }  
     }
 };
 
