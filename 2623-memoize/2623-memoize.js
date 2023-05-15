@@ -2,14 +2,14 @@
  * @param {Function} fn
  */
 function memoize(fn) {
-    let cache = {}
+    let cache = new Map()
     return function(...args) {
         let key = args.join()
-        if(key in cache){
-          return cache[key]
+        if(cache.has(key)){
+          return cache.get(key)
         }else{
           let result  = fn(...args);
-          cache[key] = result;
+          cache.set(key, result)
           return result
         }
     }
