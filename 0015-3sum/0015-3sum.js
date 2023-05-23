@@ -5,9 +5,9 @@
 var threeSum = function(nums) {
      let resultArray = []
      nums = nums.sort((a,b) => a-b)
+    
     for(let i=0; i<nums.length; i++){
-        if(nums[i] > 0 ) break
-        if(i > 0 && nums[i] === nums[i-1]){
+         if(i > 0 && nums[i] === nums[i-1]){
             continue;
         }
         let pointer1 = i+1; 
