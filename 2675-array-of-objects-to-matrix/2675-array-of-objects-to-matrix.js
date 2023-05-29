@@ -40,7 +40,6 @@ var recursive = (cObject, prevKey, map, cRow, emptyRows) =>{
     let initialKey = prevKey
     for(const key in cObject){
      prevKey += (prevKey.length > 0)? `.${key}`: `${key}`;
-     console.log(prevKey)
      let cElement = cObject[key]
       if(typeof cObject[key] === "object" && cObject[key] !== null ){
           recursive(cObject[key], prevKey, map, cRow, emptyRows)
