@@ -9,7 +9,6 @@ let cStr = s;
 let pointer1 = 0;
 let pointer2 = 1;
 let change = k;
-let map = new Map()
 let max = 0
 
 while(pointer2 < cStr.length){
@@ -18,17 +17,17 @@ while(pointer2 < cStr.length){
    if(val1 !== val2){
       if(change > 0){
         change--;
-        pointer2++
       }else{
         let diff = pointer2 - pointer1;
         max = Math.max(max, diff);
         pointer1++;
         pointer2 = pointer1+1;
         change = k;
+        continue;
       }   
-  }else{
-       pointer2++ 
   }
+    
+  pointer2++ 
 }
  while(change > 0 && pointer1>0){
      pointer1--;
@@ -43,6 +42,6 @@ while(pointer2 < cStr.length){
 change = 0
 
 "ABBB"
- 
-2
+  ||
+
 */
