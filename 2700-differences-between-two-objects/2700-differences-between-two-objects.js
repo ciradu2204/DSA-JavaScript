@@ -4,13 +4,10 @@
  * @return {object}
  */
 function objDiff(obj1, obj2) {
-    let result = {}
-    recursive(obj1, obj2, result, [])
-    return result;
-   
+    return recursive(obj1, obj2)   
 };
 
-function recursive(obj1, obj2, result, prevKey){
+function recursive(obj1, obj2){
      if(obj1 === obj2){
          return []
      }
@@ -28,25 +25,16 @@ function recursive(obj1, obj2, result, prevKey){
      if((Array.isArray(obj1) !== Array.isArray(obj2))){
          return [obj1,obj2]
      }
-    
+    let currentObject = {}
     for(const key in obj1){
-      prevKey.push(key)
-      let value = recursive(obj1[key], obj2[key], result, prevKey)
-      if(value.length > 0){
-          let object  = result;
-          let currentObject = object;
-          for(let i=0; i<prevKey.length;i++){
-               if(i+1 == prevKey.length){
-                  currentObject[prevKey[i]] = value
-              }else if(!currentObject.hasOwnProperty(prevKey[i])){
-                currentObject[prevKey[i]] = {} 
-              }
-              currentObject = currentObject[prevKey[i]]
+      if(key in obj2){
+          let diff = recursive(obj1[key], obj2[key])
+          if(Object.keys(diff).length > 0){
+              currentObject[key] = diff
           }
-      }
-      prevKey.pop() 
+      } 
     }
-    return []
+    return currentObject
     
 }
 
