@@ -5,17 +5,11 @@
  */
 var chunk = function(arr, size) {
      let resultArray = []
-     let chunkedArray = []
-     for(let i= 0; i<arr.length; i++){
-         if(chunkedArray.length < size){
-             chunkedArray.push(arr[i])
-         }else{
-            resultArray.push(chunkedArray)
-            chunkedArray = [arr[i]]
-         }
+     let index = 0;
+     while(index < arr.length){
+         resultArray.push(arr.slice(index, index+size))
+          index +=size
      }
-    if(chunkedArray.length >0){
-        resultArray.push(chunkedArray)
-    }
+ 
     return resultArray
 };
