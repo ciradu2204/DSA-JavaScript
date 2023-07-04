@@ -9,12 +9,13 @@ var findMin = function(nums) {
    let m = 0;
    let result = nums[m]
    while(left <= right){  
-     if(nums[left] <= nums[right]){
+     if(nums[left] < nums[right]){
          //it is sorted;
          result = Math.min(result, nums[left])
          break;
      }
      m = Math.floor((left + right)/2)
+     result = Math.min(result, nums[m])
      if(nums[m] >= nums[left]){
          left = m + 1;
      }else if(nums[m] < nums[left]){
@@ -33,8 +34,8 @@ Given a sorted rotated array
 minimum element = 1
              0  1  2  3  4
 Example 3 = [3, 4, 5, 1, 2]
-            p1  
-                         p2
+                      p1  
+                      p2
     m = (p2 + p1)/2  =2
     
     if(m-1 > 0 && nums[m-1] < nums[m] && nums[m-1]< nums[m+1]){
