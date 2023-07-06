@@ -7,24 +7,19 @@ var findMin = function(nums) {
    let left = 0; 
    let right = nums.length -1; 
    let m = 0;
-   let result = nums[m]
-   while(left <= right){  
-     if(nums[left] < nums[right]){
-         //it is sorted;
-         result = Math.min(result, nums[left])
-         break;
-     }
+    while(left < right){  
      m = Math.floor((left + right)/2)
-     result = Math.min(result, nums[m])
-     if(nums[m] >= nums[left]){
+     if(nums[m] > nums[right]){
          left = m + 1;
-     }else if(nums[m] < nums[left]){
+     }else if(nums[m] < nums[right]){
          right = m
-     } 
+     }else{
+         nums[left]
+     }
      
     }
     
-    return result
+    return nums[left]
     
 };
 
