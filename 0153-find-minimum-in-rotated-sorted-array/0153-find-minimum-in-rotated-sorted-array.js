@@ -3,7 +3,9 @@
  * @return {number}
  */
 var findMin = function(nums) {
+//in A sorted array, they would never be a case where the mid point is greater than  right.Therefore 1st condition is nums[left] > nums[right] -> look to the right
     
+//If the mid point is less than nums[right] then we know that the right side is sorted so we look the left
    let left = 0; 
    let right = nums.length -1; 
    let m = 0;
@@ -13,7 +15,6 @@ var findMin = function(nums) {
          left = m + 1;
      }else if(nums[m] < nums[right]){
          right = m
-
      }else{
          nums[left]
      }
